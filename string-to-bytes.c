@@ -18,8 +18,8 @@ int main() {
 }
 
 int string_to_bytes(char *s) {
-  while (*s != 0){
-    printf("%08b ", (unsigned char)*s );
+  while (*s != '\0'){
+    printf("%02x ", (unsigned char)*s );
     s++; // Don't need to do s += sizeof(unsigned char) as C handles this with s++
   }
   return 0;
