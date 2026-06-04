@@ -1,26 +1,21 @@
 #include <stdio.h>
-
-int string_to_bytes(char *s);
+#include <limits.h>
 
 int main() {
-  char s[255]; // declaring s as a character array allocates memory on the stack
-  printf("Enter a string to convert to bytes: ");
+    printf("The size of a char is %lu\nThe max size is %d\n\n", sizeof(char), CHAR_MAX);
+    printf("The size of a short is %lu\nThe max is %d\n\n", sizeof(short), SHRT_MAX);
+    printf("The size of an int is %lu\nThe max is %d\n\n", sizeof(int), INT_MAX);
+    printf("The size of a long is %lu\nThe max is %ld\n\n", sizeof(long),
+           LONG_MAX);
 
-  if (fgets(s, sizeof(s), stdin) != NULL) {
-    printf("You entered: %s\n", s);
-    printf("In bytes:\n");
-    string_to_bytes(s);
-  } else {
-    printf("Nothing entered");
-  }
-  printf("\n");
-  return 0;
-}
+    // Testing max sizes with overflows
+    char maxc = CHAR_MAX;
+    char ovrc = maxc + 1;
 
-int string_to_bytes(char *s) {
-  while (*s != 0){
-    printf("%08b ", (unsigned char)*s );
-    s++; // Don't need to do s += sizeof(unsigned char) as C handles this with s++
-  }
-  return 0;
+    printf("Demonstrating overflows: maxc = %d, maxc + 1 = %d\n", maxc, ovrc);
+
+
+
+    return 0;
+
 }
